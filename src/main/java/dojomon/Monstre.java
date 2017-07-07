@@ -9,6 +9,8 @@ public class Monstre {
 	private static final int MAX_PV = 100;
 	private int pv;
 	private int pa;
+	private final Enum<Element> element;
+	private final Enum<Element> faiblesse;
 
 	public Monstre(MonstreHelper utils) {
 		this.pv = utils.genValue(MIN_PV, MAX_PV);
@@ -17,6 +19,14 @@ public class Monstre {
 		checkPv();
 		checkPa();
 		checkPJTotal();
+		this.element = Element.values()[utils.genValue(0, Element.values().length)];
+		this.faiblesse = Element.values()[utils.genValue(0, Element.values().length)];
+	}
+
+	public Monstre(MonstreHelper help, Element element, Element faiblesse) {
+		this.pv = help.genValue(MIN_PV, MAX_PV);
+		this.element = element;
+		this.faiblesse = faiblesse;
 	}
 
 	public int getPV() {
@@ -46,8 +56,27 @@ public class Monstre {
 
 	}
 
-	private int getPJTotal() {
+	public int getPJTotal() {
 		return pv + pa;
+	}
+
+	public void setPV(int i) {
+		pv = i;
+	}
+
+	public String isMort() {
+		if(getPV()<=0){
+			return "Monstre mort";
+		}
+		return "";
+	}
+
+	public Object getElement() {
+		return element;
+	}
+
+	public Object getFaiblesse() {
+		return faiblesse;
 	}
 
 }
