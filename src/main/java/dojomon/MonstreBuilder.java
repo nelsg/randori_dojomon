@@ -10,13 +10,13 @@ import java.util.List;
 public class MonstreBuilder {
 	
 	/**
-	 * Crée un nouveau monstre qui est différent de celui passé en paramètre. Pour les différencier, voir {@link #isIdentical(Monstre, Monstre)}
+	 * Crée une liste de deux monstres différent. Pour les différencier, voir {@link #isIdentical(Monstre, Monstre)}
 	 * @param number totalement inutile pour le moment. Sera utilisé pour définir un nombre de monstres à créer.
 	 * @param help
-	 * @return une liste de monstres. Pour le moment, un seul élément.
+	 * @return une liste de monstres. Pour le moment, deux éléments.
 	 */
 	public List<Monstre> creationMonstreDifferent(int number, MonstreHelper help) {
-		// TODO Améliorer la méthode avec une liste de monstres plutôt qu'un seul
+		// TODO Améliorer la méthode pour prendre en compte number
 		List<Monstre> monstres = new ArrayList<Monstre>();
 		Monstre monstre1 = new Monstre(help);
 		Monstre monstre2 = new Monstre(help);

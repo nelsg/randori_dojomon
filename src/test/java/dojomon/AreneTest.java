@@ -170,4 +170,81 @@ public class AreneTest {
 		Assert.assertEquals("", monstre2.isMort());
 		Assert.assertEquals(36, monstre2.getPV());
 	}
+	
+	@Test
+	public void attaqueTestAvecElementEtFaiblesse() {
+		// given
+		int number = 2;
+		MonstreBuilder monstrebuilder = new MonstreBuilder();
+		Arene arene = new Arene();
+		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(50).thenReturn(Element.TERRE.ordinal()).thenReturn(0)
+		.thenReturn(80).thenReturn(60).thenReturn(0).thenReturn(Element.TERRE.ordinal());
+		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
+		Monstre monstre1 = monstres.get(0);
+		Monstre monstre2 = monstres.get(1);
+		int pa_m1 = (int) (monstre1.getPA()*1.3);
+		int pv_m2 = monstre2.getPV();
+
+		// when
+		arene.attaque(monstre1, monstre2);
+
+		// then
+		Assert.assertEquals(pv_m2 - pa_m1, monstre2.getPV());
+	}
+
+	/**
+	 * Teste qu'un défenseur avec ELEMENT identique à la faiblesse de l'attaquant
+	 * voit ses degats subit reduit de 30%  
+	 */
+	@Test
+	public void attaqueTestAvecElementEtFaiblesse2() {
+		// given
+		int number = 2;
+		MonstreBuilder monstrebuilder = new MonstreBuilder();
+		Arene arene = new Arene();
+		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(50).thenReturn(0).thenReturn(Element.TERRE.ordinal())
+		.thenReturn(80).thenReturn(60).thenReturn(Element.TERRE.ordinal()).thenReturn(0);
+		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
+		Monstre monstre1 = monstres.get(0);
+		Monstre monstre2 = monstres.get(1);
+		int pa_m1 = (int) (monstre1.getPA()*0.7);
+		int pv_m2 = monstre2.getPV();
+
+		// when
+		arene.attaque(monstre1, monstre2);
+
+		// then
+		Assert.assertEquals(pv_m2 - pa_m1, monstre2.getPV());
+	}
+	
+	/**
+	 * Test qui verifie que les degat sont normaux si le defenseur et l'attaquant
+	 * ont le meme element et la meme faiblesse par inversement
+	 */
+	@Test
+	public void attaqueTestAvecElementEtFaiblesse3() {
+		// given
+		int number = 2;
+		MonstreBuilder monstrebuilder = new MonstreBuilder();
+		Arene arene = new Arene();
+		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(50).thenReturn(Element.FEU.ordinal()).thenReturn(Element.TERRE.ordinal())
+		.thenReturn(80).thenReturn(60).thenReturn(Element.TERRE.ordinal()).thenReturn(Element.FEU.ordinal());
+		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
+		Monstre monstre1 = monstres.get(0);
+		Monstre monstre2 = monstres.get(1);
+		int pa_m1 = (int) (monstre1.getPA());
+		int pv_m2 = monstre2.getPV();
+
+		// when
+		arene.attaque(monstre1, monstre2);
+
+		// then
+		Assert.assertEquals(pv_m2 - pa_m1, monstre2.getPV());
+	}
 }

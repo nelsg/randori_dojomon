@@ -13,9 +13,13 @@ public class Monstre {
 	private static final int MAX_PV = 100;
 	private int pv;
 	private int pa;
-	private final Enum<Element> element;
-	private final Enum<Element> faiblesse;
+	private final Element force;
+	private final Element faiblesse;
 
+	/**
+	 * Constructeur de la classe monstre
+	 * @param utils
+	 */
 	public Monstre(MonstreHelper utils) {
 		this.pv = utils.genValue(MIN_PV, MAX_PV);
 		
@@ -23,13 +27,36 @@ public class Monstre {
 		checkPv();
 		checkPa();
 		checkPJTotal();
-		this.element = Element.values()[utils.genValue(0, Element.values().length)];
-		this.faiblesse = Element.values()[utils.genValue(0, Element.values().length)];
+		this.force = Element.values()[utils.genValue(0, Element.values().length)];
+		Element tmpFaiblesse = Element.values()[utils.genValue(0, Element.values().length)];
+		
+		int i=0;
+		while(i++ < 100 && this.getForce() == tmpFaiblesse){
+			if(this.getForce() == Element.AUCUN){
+				break;
+			} else if(tmpFaiblesse == Element.AUCUN){
+				break;
+			}
+			tmpFaiblesse = Element.values()[utils.genValue(0, Element.values().length)];
+		}
+		if (i == 100) {
+			tmpFaiblesse = Element.AUCUN;
+		}
+		this.faiblesse = tmpFaiblesse;
+		
 	}
 
+	/**
+	 * @deprecated Utiliser le constructeur: {@link #Monstre(MonstreHelper)}
+	 * 
+	 * @param help
+	 * @param element
+	 * @param faiblesse
+	 */
+	@Deprecated
 	public Monstre(MonstreHelper help, Element element, Element faiblesse) {
 		this.pv = help.genValue(MIN_PV, MAX_PV);
-		this.element = element;
+		this.force = element;
 		this.faiblesse = faiblesse;
 	}
 
@@ -88,8 +115,8 @@ public class Monstre {
 		return "";
 	}
 
-	public Object getElement() {
-		return element;
+	public Object getForce() {
+		return force;
 	}
 
 	public Object getFaiblesse() {

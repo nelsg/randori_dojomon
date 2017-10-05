@@ -5,6 +5,9 @@ package dojomon;
  *
  */
 public enum Element {
+	/**
+	 * AUCUN vaut pour absence d'élément 
+	 */
 	AUCUN, TERRE, AIR, EAU, FEU;
 
 }

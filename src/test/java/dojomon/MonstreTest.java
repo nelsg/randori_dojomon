@@ -1,6 +1,7 @@
 package dojomon;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -15,7 +16,8 @@ public class MonstreTest {
 	public void creationmontre() {
 		// GIVEN
 		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
-		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(70).thenReturn(60).thenReturn(0);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(60).thenReturn(0);
 
 		// WHEN
 		Monstre monstre = new Monstre(mock);
@@ -120,47 +122,39 @@ public class MonstreTest {
 		Assert.fail();
 	}
 
-//	@Test
-//	public void checkCreationMonstres() {
-//		//GIVEN
-//		Monstre monstre1 = new Monstre(new MonstreHelper());
-//		Monstre monstre2 = new Monstre(new MonstreHelper());
-//		//WHEN
-//
-//		//THEN
-//		Assert.assertEquals(monstre1.getPA(), monstre2.getPA());
-//	}
+
 	@Test
 	public void creationmontre_Element() {
 		// GIVEN
 		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
-		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(70).thenReturn(60);
-
-			
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(60);
+	
 		// WHEN
 		Monstre monstre = new Monstre(mock, Element.TERRE, Element.EAU);
 
 		// THEN
-		Assert.assertEquals(Element.TERRE, monstre.getElement());
-//		Assert.assertTrue(monstre.getPV() == 70);
-//		Assert.assertTrue(monstre.getPA() == 60);
-//		Mockito.verify(mock, Mockito.times(1)).genValue(Mockito.eq(10), Mockito.eq(100));
-//		Mockito.verify(mock, Mockito.times(1)).genValue(Mockito.eq(30), Mockito.eq(80));
+		Assert.assertEquals(Element.TERRE, monstre.getForce());
 	}
 	
 	@Test
 	public void creationMonstreTest() {
 		// given
 		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
-		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(70).thenReturn(50).thenReturn(1);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
+		.thenReturn(70).thenReturn(50).thenReturn(1);
 
 		// when
 		Monstre monstre = new Monstre(mock);
 
 		// then
-		Assert.assertEquals(Element.TERRE, monstre.getElement());
+		Assert.assertEquals(Element.TERRE, monstre.getForce());
 	}
 	
+	/**
+	 * test qui vérifie l'impossibilité de créer un monstre avec une faiblesse 
+	 * et un element identique
+	 */
 	@Test
 	public void creationMonstreAvecFaiblesseTest() {
 		// given
@@ -173,10 +167,8 @@ public class MonstreTest {
 		Monstre monstre = new Monstre(mock);
 
 		// then
-		Assert.assertEquals(Element.TERRE, monstre.getElement());
+		Assert.assertEquals(Element.TERRE, monstre.getForce());
 		Assert.assertNotEquals(Element.TERRE, monstre.getFaiblesse());
 		Assert.assertEquals(Element.FEU, monstre.getFaiblesse());
 	}
-	
-	
 }

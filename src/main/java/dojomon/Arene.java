@@ -12,7 +12,18 @@ public class Arene {
 	 * @param monstre2
 	 */
 	public void attaque(Monstre monstre1, Monstre monstre2) {
-		monstre2.setPV(monstre2.getPV() - monstre1.getPA());
+		double multiplicateur = 1;
+		if(monstre2.getFaiblesse()==monstre1.getForce() 
+				&& monstre2.getFaiblesse()!=Element.AUCUN){
+			multiplicateur += 0.3;	
+		}
+		
+		if(monstre1.getFaiblesse()==monstre2.getForce() 
+				&& monstre1.getFaiblesse()!=Element.AUCUN){
+			multiplicateur -= 0.3;
+		}
+		
+		monstre2.setPV((int) (monstre2.getPV() - (monstre1.getPA()*multiplicateur)));
 	}
 
 	/**
