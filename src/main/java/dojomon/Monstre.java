@@ -1,5 +1,9 @@
 package dojomon;
 
+/**
+ * Classe qui définit un monstre, qui a des attributs de jeu et d'attaque
+ *
+ */
 public class Monstre {
 	private static final int MIN_PA = 10;
 	private static final int MAX_PA = 100;
@@ -37,18 +41,27 @@ public class Monstre {
 		return pa;
 	}
 
+	/**
+	 * Vérifie que les points de vie ne sont pas en dehors des limites. Sinon, balance une exception
+	 */
 	private void checkPv() {
 		if (pv < MIN_PV || pv > MAX_PV) {
 			throw new IllegalStateException("les PV ne sont pas dans les limites");
 		}
 	}
 
+	/**
+	 * Vérifie que les points d'attaque ne sont pas en dehors des limites. Sinon, balance une exception
+	 */
 	private void checkPa() {
 		if (pa < MIN_PA || pa > MAX_PA) {
 			throw new IllegalStateException("les PA ne sont pas dans les limites");
 		}
 	}
-
+	
+	/**
+	 * Vérifie que les points de jeu ne sont pas en dehors des limites. Sinon, balance une exception
+	 */
 	private void checkPJTotal() {
 		if (getPJTotal() < 100 || getPJTotal() > 150) {
 			throw new IllegalStateException("le total des PV et PA  ne sont pas dans les limites");
@@ -64,6 +77,10 @@ public class Monstre {
 		pv = i;
 	}
 
+	/**
+	 * Vérifie si le monstre est mort ou pas
+	 * @return true si mort
+	 */
 	public String isMort() {
 		if(getPV()<=0){
 			return "Monstre mort";

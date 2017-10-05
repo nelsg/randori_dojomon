@@ -1,5 +1,9 @@
 package dojomon;
 
+/**
+ * Classe qui rassemble les utilitaires pour la création de monstre
+ *
+ */
 public class MonstreHelper {
 	/**
 	 * 
