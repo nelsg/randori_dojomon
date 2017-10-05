@@ -15,8 +15,8 @@ public class AreneTest {
 		MonstreBuilder monstrebuilder = new MonstreBuilder();
 		Arene arene = new Arene();
 		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
-		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(70).thenReturn(50).thenReturn(0)
-				.thenReturn(70).thenReturn(50).thenReturn(0).thenReturn(80).thenReturn(60).thenReturn(0);
+		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(70).thenReturn(50).thenReturn(0).thenReturn(0)
+				.thenReturn(70).thenReturn(50).thenReturn(0).thenReturn(0).thenReturn(80).thenReturn(60).thenReturn(0).thenReturn(0);
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);
 		Monstre monstre2 = monstres.get(1);
@@ -39,8 +39,8 @@ public class AreneTest {
 		MonstreHelper mock = Mockito.mock(MonstreHelper.class);
 		// @formatter:off
 		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
-				.thenReturn(70).thenReturn(50).thenReturn(0)
-				.thenReturn(49).thenReturn(70).thenReturn(0);
+				.thenReturn(70).thenReturn(50).thenReturn(0).thenReturn(0)
+				.thenReturn(49).thenReturn(70).thenReturn(0).thenReturn(0);
 		// @formatter:on
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);
@@ -65,8 +65,8 @@ public class AreneTest {
 		int m2_pv = 50;
 		int m2_pa = 71;
 		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
-				.thenReturn(m1_pv).thenReturn(m1_pa).thenReturn(0)
-				.thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0);
+				.thenReturn(m1_pv).thenReturn(m1_pa).thenReturn(0).thenReturn(0)
+				.thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0).thenReturn(0);
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);
 		Monstre monstre2 = monstres.get(1);
@@ -91,7 +91,7 @@ public class AreneTest {
 		int m2_pv = 60;
 		int m2_pa = 71;
 		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt())).thenReturn(m1_pv).thenReturn(m1_pa)
-				.thenReturn(0).thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0);
+				.thenReturn(0).thenReturn(0).thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0).thenReturn(0);
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);
 		Monstre monstre2 = monstres.get(1);
@@ -117,8 +117,8 @@ public class AreneTest {
 		int m2_pa = 71;
 		// @formatter:off
 		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
-				.thenReturn(m1_pv).thenReturn(m1_pa).thenReturn(0)
-				.thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0);
+				.thenReturn(m1_pv).thenReturn(m1_pa).thenReturn(0).thenReturn(0)
+				.thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0).thenReturn(0);
 		// @formatter:on
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);
@@ -152,7 +152,7 @@ public class AreneTest {
 		// @formatter:off
 		Mockito.when(mock.genValue(Mockito.anyInt(), Mockito.anyInt()))
 				.thenReturn(m1_pv).thenReturn(m1_pa)
-				.thenReturn(0).thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0);
+				.thenReturn(0).thenReturn(0).thenReturn(m2_pv).thenReturn(m2_pa).thenReturn(0).thenReturn(0);
 		// @formatter:on
 		List<Monstre> monstres = monstrebuilder.creationMonstreDifferent(number, mock);
 		Monstre monstre1 = monstres.get(0);

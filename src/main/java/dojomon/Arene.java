@@ -21,7 +21,6 @@ public class Arene {
 	 * @param monstre2
 	 */
 	public void combattre(Monstre monstre1, Monstre monstre2) {
-		// TODO On n'arrive pas jusqu'à la mort (critère de sortie)
 		String monstreMort = "Non";
 		
 		while (!"Monstre mort".equals(monstreMort)) {
